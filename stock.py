@@ -13,21 +13,7 @@ def predict1(array):
 				MAX= y-x
 	return MAX
 
-# O(nlog(n))
-@benchmark(1000000)
-def predict2(array):
-	SORTED_ARRAY = []
-	for i,x in enumerate(array):
-		SORTED_ARRAY.append((i,x))
-	SORTED_ARRAY = sorted(SORTED_ARRAY , key = lambda x:x[1])
-	MAX = 0
-	half = len(SORTED_ARRAY)//2
-	full = len(SORTED_ARRAY)-1
-	for i in range(half+1):
-		if( ( (SORTED_ARRAY[full-i][1]-SORTED_ARRAY[i][1]) > MAX ) and (SORTED_ARRAY[full-i][0]>SORTED_ARRAY[i][0])):
-			MAX = SORTED_ARRAY[full-i][1]-SORTED_ARRAY[i][1]
-	return MAX
-
+# O(n)
 @benchmark(1000000)
 def predict3(array):
 	MIN_ELEMENT = 1000000000
